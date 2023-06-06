@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Routing 1 |Encep Rahman Armana|D112121053</title>
+    <script type="text/javascript" src="lib/vue.js"></script>
+    <script type="text/javascript" src="lib/vue-routter.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <router-link to="/">Home</router-link>
+      <router-link to="/">About</router-link>
+      <hr />
+      <router-link></router-link>
+    </div>
+    <script type="text/javascript">
+      //definisi konfigurasi component
+      const Home = { template: '<h1>Halaman Home</h1>' };
+      const About = { template: '<h1>Halaman About</h1>' };
+      // maping route path dengan component
+      const routes = [
+        { path: '/', component: Home, alias: '/home' },
+        { path: '/about', component: About },
+      ];
+      // register routes pada objek router
+      const router = new VueRouter({
+        routes, // short 'routes: routes'
+      });
+      // register objek router pada objek vue
+      var vm = new Vue({
+        el: '#app',
+        router,
+      });
+    </script>
+  </body>
+</html>
