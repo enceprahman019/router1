@@ -6,18 +6,79 @@
     <title>Routing 1 |Encep Rahman Armana|D112121053</title>
     <script type="text/javascript" src="lib/vue.js"></script>
     <script type="text/javascript" src="lib/vue-routter.js"></script>
+    <link rel="stylesheet" href="style/bootstrap-5.3.0-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="main.css" />
+    <style type="text/css">
+      .fade-enter-active,
+      .fade-leave-active {
+        transition: opacity 0.5s;
+      }
+      .fade-enter,
+      .fade-leave-to {
+        opacity: 0;
+      }
+    </style>
   </head>
   <body>
-    <div id="app">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
-      <router-link to="/books">Books</router-link>
-      <hr />
-      <router-view></router-view>
+    <!-- Awal Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#"> <img src="img/logowt.png" alt="Logo" width="40" height="30" class="d-inline-block align-text-top me-3" />Cepzz<strong>_BookStore</strong> </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mt-auto" id="navbarNav">
+          <form class="d-flex ms-auto mt-3 container" role="search">
+            <input class="form-control me-2" type="Cari Buku" placeholder="Cari Buku" aria-label="Cari Buku" />
+            <button class="btn btn-light" type="submit">Cari</button>
+          </form>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Notifikasi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Keranjang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Daftar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Masuk</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <!-- Membuat Tampilan Carousel -->
+    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="..." class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="..." class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="..." class="d-block w-100" alt="..." />
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <script type="text/javascript">
-      import { BooksComponent } from './BooksComponents.js';
-      import { BooksComponent } from './BooksComponents.js';
+    <script type="module">
+      import { BooksComponents } from './BooksComponents.js';
+      import { BookComponents } from './BookComponents.js';
       //definisi konfigurasi component
       const Home = { template: '<h1>Halaman Home</h1>' };
       const About = { template: '<h1>Halaman About</h1>' };
@@ -25,8 +86,8 @@
       const routes = [
         { path: '/', component: Home, alias: '/home' },
         { path: '/about', component: About },
-        { path: '/books', component: BooksComponent },
-        { path: '/books:id', component: BooksComponent },
+        { path: '/books', component: BooksComponents },
+        { path: '/books/:id', component: BookComponent, props: true },
         { path: '*', redirect: '/' },
       ];
       // register routes pada objek router
